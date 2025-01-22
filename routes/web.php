@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('dashboard', function () {
+    return view('dashboard');
+})->name('dashboard')->middleware('auth');
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login-aksi', [LoginController::class, 'loginAksi'])->name('login-aksi');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::resource('user', UserController::class);
+Route::get('/ticket-aduan/{status}', [TicketController::class, 'aduan'])->name('ticket-aduan');
+
+Route::resource('user', UserController::class)->except('show')->middleware('auth');
+Route::resource('ticket', TicketController::class)->except('show')->middleware('auth');

@@ -14,15 +14,17 @@
       <div class="container">
         <ul class="mainnav">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="{{ route('dashboard') }}">
                 <i class="icon-home"></i><span>Home</span>
             </a>
           </li>
+          @if (Auth::user()->isAdmin == 1)
           <li class="nav-item">
             <a class="nav-link" href="{{ route('user.index') }}">
                 <i class="icon-user"></i><span>User</span>
             </a>
           </li>
+          @endif
           {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
               <i class="icon-book"></i><span>Aduan Masuk</span>
@@ -35,25 +37,25 @@
         </li> --}}
 
           <li class="nav-item">
-            <a class="nav-link active" href="#">
-                <i class="icon-file"></i><span>Aduan Masuk</span>
+            <a class="nav-link active" href="{{ route('ticket-aduan', ['status' => 'masuk']) }}">
+                <i class="icon-envelope"></i><span>Aduan Masuk</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="#">
-                <i class="icon-list-alt"></i><span>Aduan Diproses</span>
+            <a class="nav-link active" href="{{ route('ticket-aduan', ['status' => 'diproses']) }}">
+                <i class="icon-envelope"></i><span>Aduan Diproses</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="#">
-                <i class="icon-list-alt"></i><span>Aduan Selesai</span>
+            <a class="nav-link active" href="{{ route('ticket-aduan', ['status' => 'selesai']) }}">
+                <i class="icon-envelope"></i><span>Aduan Selesai</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="{{ route('logout') }}">
                 <i class="icon-signout"></i><span>Keluar</span>
             </a>
           </li>
@@ -85,7 +87,7 @@
     <div class="footer-inner">
       <div class="container">
         <div class="row">
-          <div class="span12"> &copy; 2024 <a href="#">Diskominfo Barito Kuala</a></div>
+          <div class="span12"> &copy; 2025 <a href="#">Diskominfo Barito Kuala</a></div>
           <!-- /span12 -->
         </div>
         <!-- /row -->

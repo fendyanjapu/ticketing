@@ -21,8 +21,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return view('dashboard');
-            // return redirect()->route('dashboard');
+            return redirect()->route('dashboard');
         }
 
         return back()->with('loginError', 'Login failed!');
@@ -32,6 +31,6 @@ class LoginController extends Controller
     {
         Auth::logout();
         $request->session()->invalidate();
-        return redirect()->route('home');
+        return redirect()->route('login');
     }
 }

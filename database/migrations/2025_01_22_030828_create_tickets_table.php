@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('keterangan')->nullable();
             $table->string('status', 50);
             $table->date('tanggalMasuk');
-            $table->date('tanggalSelesai');
+            $table->date('tanggalSelesai')->nullable();
             $table->timestamps();
         });
     }

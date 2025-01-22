@@ -12,6 +12,11 @@
     } );
   });
 </script>
+@if (session()->has('success'))
+	<div class="alert alert-success" role="alert">
+		{{ session('success') }}
+	</div>
+@endif
 <h2>
     <div class="par-text">Data User</div>
     <div class="par-tex2">
@@ -34,11 +39,12 @@
         <td style="text-align: center;width:20%">{{ $item->name }}</td>
         <td style="text-align: center;">{{ $item->username }}</td>
         <td style="text-align: center">
-            <a href="{{ route('user.show', $item->id) }}" class="btn btn-secondary btn-sm mt-1" title="lihat"><i class="icon-eye-open"></i></a>
-            <a href="{{ route('user.edit', ['user' => $item->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
-
-            <a href="{{ route('user.destroy', $item->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
-              <i class="icon-trash"></i>
+            <a href="{{ route('user.edit', ['user' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
+            <form action="{{ route('user.destroy', ['user' => $item]) }}" method="post">
+                @csrf
+                @method('delete')
+                <button class="btn btn-danger btn-sm mt-1" onclick="return confirm('Hapus data?')"><i class="icon-trash"></i></button>
+            </form>
           </a>
         </td>
       </tr>

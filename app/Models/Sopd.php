@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Sopd extends Model
 {
     use HasFactory;
+
 }

@@ -17,4 +17,9 @@ class Ticket extends Model
         'tanggalMasuk',
         'tanggalSelesai',
     ];
+
+    public function sopd()
+    {
+        return $this->belongsTo(Sopd::class);
+    }
 }

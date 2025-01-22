@@ -50,6 +50,12 @@
 
 <div class="account-container">
 
+	@if (session()->has('loginError'))
+		<div class="alert alert-danger" role="alert">
+			{{ session('loginError') }}
+		</div>
+	@endif
+
 	<div class="content clearfix">
 
 		<form action="{{ route('login-aksi') }}" method="post">

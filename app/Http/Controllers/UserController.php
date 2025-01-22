@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private $rules = [
+        'name' => 'required',
+        'username' => 'required',
+    ];
     public function index()
     {
         $users = User::all();
@@ -32,24 +33,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validasi = $request->validate([
-            'name' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-        ]);
+        $validatedData = $request->validate($this->rules);
+        $validatedData['password'] = Hash::make($request->password);
+        $validatedData['isAdmin'] = 0;
+        User::create($validatedData);
 
-        $createUser = User::create([
-            'name' => $validasi['name'],
-            'username' => $validasi['username'],
-            'password' => Hash::make($validasi['password']),
-            'isAdmin' => '1'
-        ]);
-
-        if($createUser){
-            return redirect()->route('user.index');
-        } else {
-            return redirect()->back();
-        }
+        return redirect()->route('user.index')->with('success','Data berhasil disimpan');
     }
 
     /**
@@ -65,7 +54,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -73,7 +64,13 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validatedData = $request->validate($this->rules);
+        if ($request->password) {
+            $validatedData['password'] = Hash::make($request->password);
+        }
+        User::findOrFail($user->id)->update($validatedData);
+
+        return redirect(route('user.index'))->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -81,6 +78,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        return redirect(route('user.index'))->with('success','Data berhasil dihapus');
     }
 }
