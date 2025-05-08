@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->smallInteger('sopd_id');
             $table->text('aduan');
-            $table->text('tindak_lanjut');
+            $table->text('tindak_lanjut')->nullable();
             $table->text('keterangan')->nullable();
             $table->string('status', 50);
             $table->date('tanggalMasuk');

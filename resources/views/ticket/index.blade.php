@@ -4,11 +4,11 @@
 <script>
   $(document).ready(function(){
     $('#tabel').DataTable( {
-        scrollX: true,
-        scrollY: true,
-       "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json"
+      layout: {
+        topStart: {
+            buttons: ['excel', 'pdf']
         }
+    }
     } );
   });
 </script>
