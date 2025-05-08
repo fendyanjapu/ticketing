@@ -12,6 +12,7 @@ class Ticket extends Model
     protected $fillable = [
         'sopd_id',
         'aduan',
+        'tindak_lanjut',
         'keterangan',
         'status',
         'tanggalMasuk',
