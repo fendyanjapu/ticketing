@@ -31,6 +31,7 @@
       <th style="vertical-align: middle; text-align: center" width="15px">No</th>
       <th style="vertical-align: middle; text-align: center">SOPD</th>
       <th style="vertical-align: middle; text-align: center">Aduan</th>
+      <th style="vertical-align: middle; text-align: center">Tindak Lanjut</th>
       <th style="vertical-align: middle; text-align: center">Tanggal Masuk</th>
       <th style="vertical-align: middle; text-align: center">Tanggal Selesai</th>
       <th style="vertical-align: middle; text-align: center">Keterangan</th>
@@ -43,6 +44,7 @@
         <td style="text-align: center;width:1%">{{ $loop->iteration }}</td>
         <td style="text-align: center;width:20%">{{ $item->sopd->nama_sopd }}</td>
         <td style="text-align: center;">{{ $item->aduan }}</td>
+        <td style="text-align: center;">{{ $item->tindak_lanjut }}</td>
         <td style="text-align: center;">{{ $item->tanggalMasuk }}</td>
         <td style="text-align: center;">{{ $item->tanggalSelesai }}</td>
         <td style="text-align: center;">{{ $item->keterangan }}</td>
