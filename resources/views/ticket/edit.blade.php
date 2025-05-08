@@ -33,6 +33,16 @@
                 </div>
 
                 <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Tindak Lanjut</label>
+                    <div class="col-sm-8">
+                        <textarea name="tindak_lanjut" id="" class="form-control"></textarea>
+                        @error('tindak_lanjut')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Status</label>
                     <div class="col-sm-8">
                         <select class="form-control" name="status" required>

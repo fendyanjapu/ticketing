@@ -91,6 +91,9 @@ class TicketController extends Controller
         if ($request->tanggalSelesai) {
             $validatedData['tanggalSelesai'] = $request->tanggalSelesai;
         }
+        if ($request->tindak_lanjut) {
+            $validatedData['tindak_lanjut'] = $request->tindak_lanjut;
+        }
         Ticket::findOrFail($ticket->id)->update($validatedData);
 
         return redirect(route('ticket-aduan', ['status' => $request->status]))->with('success','Data berhasil diupdate');
