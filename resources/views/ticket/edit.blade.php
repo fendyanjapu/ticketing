@@ -35,7 +35,7 @@
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Tindak Lanjut</label>
                     <div class="col-sm-8">
-                        <textarea name="tindak_lanjut" id="" class="form-control"></textarea>
+                        <textarea name="tindak_lanjut" id="" class="form-control">{{ $ticket->tindak_lanjut }}</textarea>
                         @error('tindak_lanjut')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
